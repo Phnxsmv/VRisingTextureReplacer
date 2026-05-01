@@ -10,7 +10,6 @@ using System.IO;
 using System.Reflection;
 using UnityEngine;
 using VRisingTextureReplacer.Helpers;
-using VRisingTextureReplacer.Replacer;
 
 namespace VRisingTextureReplacer;
 
@@ -66,7 +65,7 @@ public class Plugin : BasePlugin
                 continue;
             }
 
-            // Compress to BC7 to match the game's original texture format
+            // Compress to DXT5 to match the game's original texture format
             // true = high quality compression (slower load, better result)
             tex.Compress(true);
 
@@ -87,19 +86,17 @@ public class Plugin : BasePlugin
 
         Il2CppInterop.Runtime.Injection.ClassInjector.RegisterTypeInIl2Cpp<CoroutineHelper>();
         Harmony.PatchAll();
-        
-        TextureReplacer.Init();
 
         Info($"Patched — {ReplacementTextures.Count} replacement texture(s) ready.");
     }
 
     public override bool Unload()
     {
-        TextureReplacer.Shutdown();
         foreach (var tex in ReplacementTextures.Values)
             UnityEngine.Object.Destroy(tex);
         ReplacementTextures.Clear();
 		Harmony.UnpatchSelf();
+        Info("Unloaded.");
         return true;
     }
 }

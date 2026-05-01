@@ -31,6 +31,12 @@ public static class PlayerGameObject
         }
 
         var map = _hybridModelSystem.GetEntityToGameObjectMap();
+        /*Plugin.Info($"[PGO] map has {map.Count} entries");
+        foreach (var kvp in map)
+        {
+            Plugin.Info($"  key={kvp.Key.Index}v{kvp.Key.Version} go={(kvp.Value == null ? "null" : kvp.Value.name)}");
+        }
+        */
         if (map == null) return null;
 
         return map.TryGetValue(entity, out var go) ? go : null;

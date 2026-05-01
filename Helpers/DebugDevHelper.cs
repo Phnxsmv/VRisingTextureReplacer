@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace VRisingTextureReplacer.Helpers
 {
-    internal class DebugHelper
+    internal class DebugDevHelper
     {
         // Dump various methods to the log so we can find the right names
         public static void DumpSkinnedMeshRendererMethods()
