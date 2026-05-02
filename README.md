@@ -19,11 +19,11 @@ The info logging is disabled by default to avoid spamming the log file, but it c
 ## Creating Custom Textures
 - Assets are in VRising\VRising_Data\StreamingAssets\ContentArchives
 
-- github.com/zhangjiequan/AssetStudio for browsing and finding assets and their archives that contain them
+- [AssetStudio](https://github.com/zhangjiequan/AssetStudio) for browsing and finding assets and their archives that contain them
 
-- github.com/AssetRipper/AssetRipper for extracting assets. (AssetStudio has issues with extracting normal maps!)
+- [AssetRipper](https://github.com/AssetRipper/AssetRipper) for extracting assets. (AssetStudio has issues with extracting normal maps!)
 
-- github.com/nesrak1/UABEA for replacing assets. The sixth release of UABEA works.
+- [UABEA sixth release](https://github.com/nesrak1/UABEA) for replacing assets. The sixth release of UABEA works.
   The seventh release is unstable, do not use! I have not tested UABEA for extracting assets.
 
 Save any edited texture as PNG. The plugin will convert it to the correct format when loading it, either DXT5 or DXT5 linear depending on the texture type.

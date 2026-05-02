@@ -36,7 +36,7 @@ internal static class HybridEquipmentSystemPatch
             int initial = TextureReplacer.SwapTexturesForEntity(PlayerState.Character);
             if (initial > 0) Plugin.Info($"[TextureReplacer] Initial — {initial}");
             // Schedule a follow-up in case the initial mesh wasn't fully ready
-            CoroutineHelper.Instance.StartCoroutine(DelayedRescan().WrapToIl2Cpp());
+            CoroutineHelper.Instance.StartCoroutine(DelayedRescan(0.1f).WrapToIl2Cpp());
             return;
         }
 
@@ -45,7 +45,7 @@ internal static class HybridEquipmentSystemPatch
             _signature = sig;
             int immediate = TextureReplacer.SwapTexturesForEntity(PlayerState.Character);
             if (immediate > 0) Plugin.Info($"[TextureReplacer] Immediate — {immediate}");
-            CoroutineHelper.Instance.StartCoroutine(DelayedRescan().WrapToIl2Cpp());
+            CoroutineHelper.Instance.StartCoroutine(DelayedRescan(0.1f).WrapToIl2Cpp());
         }
     }
 
@@ -84,9 +84,9 @@ internal static class HybridEquipmentSystemPatch
         h = (h << 1) | (s.HideEquipment ? 1L : 0L);
         return h;
     }
-    static IEnumerator DelayedRescan()
+    internal static IEnumerator DelayedRescan(float delay)
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(delay);
         if (!PlayerState.EnsurePlayerCache()) yield break;
         int swapped = TextureReplacer.SwapTexturesForEntity(PlayerState.Character);
         if (swapped > 0) Plugin.Info($"[TextureReplacer] Delayed — {swapped}");
