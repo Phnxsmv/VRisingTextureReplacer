@@ -95,6 +95,17 @@ private static System.Action<Scene, LoadSceneMode> _sceneLoadedDelegate;
         */
         return swapCount;
     }
+    // Called both from the initial scan and from the Harmony postfix on material assignment
+    public static int SwapRendererTextures(SkinnedMeshRenderer renderer)
+    {
+        int count = 0;
+        foreach (var material in renderer.materials)
+        {
+            if (material == null) continue;
+            count += SwapMaterialTextures(material);
+        }
+        return count;
+    }
     public static void Shutdown()
     {
         if (_sceneLoadedDelegate != null)

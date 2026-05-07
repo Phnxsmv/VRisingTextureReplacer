@@ -6,18 +6,6 @@ namespace VRisingTextureReplacer.Replacer;
 
 internal static class TextureReplacer
 {
-    // Called both from the initial scan and from the Harmony postfix on material assignment
-    public static int SwapRendererTextures(SkinnedMeshRenderer renderer)
-    {
-        int count = 0;
-        foreach (var material in renderer.materials)
-        {
-            if (material == null) continue;
-            count += SwapMaterialTextures(material);
-        }
-        return count;
-    }
-
     private static int SwapMaterialTextures(Material material)
     {
         int count = 0;
