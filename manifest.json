@@ -1,7 +1,7 @@
 {
     "name": "VRisingTextureReplacer",
-    "version_number": "1.0.0",
-    "website_url": "",
+    "version_number": "1.0.1",
+    "website_url": "https://github.com/Phnxsmv/VRisingTextureReplacer",
     "description": "This is a framework that enables player texture replacement in V Rising single player. Included are a few sample textures.",
     "dependencies": []
 }
